@@ -8,11 +8,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView textView;
     StringBuilder sb = new StringBuilder();
+    static void stack_push(Stack<String> stack){
+        
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,8 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 displayupdate();
                 break;
             case R.id.buttonequals:
-                sb.append("=");
-                displayupdate();
+                bigMaths();
                 break;
             case R.id.buttonclr:
                 sb.setLength(0);
@@ -145,8 +150,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void bigMaths() {
-        BigDecimal value = new BigDecimal(1);
-        value.divide(new BigDecimal(2));
+        //BigDecimal value = new BigDecimal(1);
+        //value.divide(new BigDecimal(2));
+        Deque<BigDecimal> operands = new ArrayDeque<BigDecimal>();
+
 
     }
 
