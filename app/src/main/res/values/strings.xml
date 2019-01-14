@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Calc-u-later</string>
+    <string name="ZERO">0</string>
+    <string name="ONE">1</string>
+    <string name="TWO">2</string>
+    <string name="EQUALS">=</string>
+    <string name="THREE">3</string>
+    <string name="FOUR">4</string>
+    <string name="FIVE">5</string>
+    <string name="SIX">6</string>
+    <string name="SEVEN">7</string>
+    <string name="EIGHT">8</string>
+    <string name="NINE">9</string>
+    <string name="PLUS">+</string>
+    <string name="MINUS">-</string>
+    <string name="MULTIPLY">×</string>
+    <string name="divide">÷</string>
+    <string name="DECIMALPOINT">.</string>
+    <string name="clr">CLR</string>
+    <string name="SIN">sin</string>
+    <string name="COS">cos</string>
+    <string name="TAN">tan</string>
+    <string name="TRIG">TRIG</string>
+    <string name="displayoutputstring"></string>
+</resources>
