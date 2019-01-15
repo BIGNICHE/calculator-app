@@ -9,16 +9,27 @@ import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView textView;
     StringBuilder sb = new StringBuilder();
-    static void stack_push(Stack<String> stack){
-        
+    static void stack_push(Stack<String> operatorStack, String operator){
+        operatorStack.push(operator);
     }
+    String stack_pop(Stack<String> operatorStack, String operator){
+        operator = operatorStack.pop();
+        return operator;
+    }
+    ArrayList<BigDecimal> inputList = new ArrayList<>();
+    Queue<BigDecimal> outputQueue = new LinkedList<>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
