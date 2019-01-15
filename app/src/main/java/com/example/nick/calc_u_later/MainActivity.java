@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView textView;
     StringBuilder sb = new StringBuilder();
+    StringBuilder singlenumbersb = new StringBuilder();
     static void stack_push(Stack<String> operatorStack, String operator){
         operatorStack.push(operator);
     }
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         operator = operatorStack.pop();
         return operator;
     }
+
     ArrayList<BigDecimal> inputList = new ArrayList<>();
     Queue<BigDecimal> outputQueue = new LinkedList<>();
 
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //identify the buttons
+//--------------------------------------------------------------------------------------------------
+
         Button button0 = findViewById(R.id.button0);
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
@@ -54,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button buttondec = findViewById(R.id.buttondec);
         Button buttonsin = findViewById(R.id.buttonsin);
 
-
+        //set listeners
+//--------------------------------------------------------------------------------------------------
 
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
@@ -75,49 +82,63 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttondec.setOnClickListener(this);
         buttonsin.setOnClickListener(this);
 
+        //initialise textview
+        //------------------------------------------------------------------------------------------
         textView=(TextView)findViewById(R.id.textView);
+
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button0:
-                sb.append("0");
-                displayupdate();
+                singlenumbersb.append(0); //The stringbuilder singlenumbersb is used because multiple buttons need to be pressed in order to write operands above 9
+                sb.append("0"); // The stringbuilder sb is shown onscreen, ie your input is shown directly onscreen without any maths going on in the background
+                displayupdate(); // update the TextView with the current string of user inputs
                 break;
             case R.id.button1:
+                singlenumbersb.append(1);
                 sb.append("1");
                 displayupdate();
                 break;
             case R.id.button2:
+                singlenumbersb.append(2);
                 sb.append("2");
                 displayupdate();
                 break;
             case R.id.button3:
+                singlenumbersb.append(3);
                 sb.append("3");
                 displayupdate();
                 break;
             case R.id.button4:
+                singlenumbersb.append(4);
                 sb.append("4");
                 displayupdate();
                 break;
             case R.id.button5:
+                singlenumbersb.append(5);
                 sb.append("5");
                 displayupdate();
                 break;
             case R.id.button6:
+                singlenumbersb.append(6);
                 sb.append("6");
                 displayupdate();
                 break;
             case R.id.button7:
+                singlenumbersb.append(7);
                 sb.append("7");
                 displayupdate();
                 break;
             case R.id.button8:
+                singlenumbersb.append(8);
                 sb.append("8");
                 displayupdate();
                 break;
             case R.id.button9:
+                singlenumbersb.append(9);
                 sb.append("9");
                 displayupdate();
                 break;
