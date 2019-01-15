@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 displayupdate();
                 break;
             case R.id.buttonplus:
+                String singleOperand = singlenumbersb.toString();
                 sb.append("+");
                 displayupdate();
                 break;
