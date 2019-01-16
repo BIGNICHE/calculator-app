@@ -151,19 +151,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 displayupdate();
                 break;
             case R.id.buttonplus:
-                String singleOperand = singlenumbersb.toString();
+                toSingleOperand();
                 sb.append("+");
                 displayupdate();
                 break;
             case R.id.buttonminus:
+                toSingleOperand();
                 sb.append("-");
                 displayupdate();
                 break;
             case R.id.buttonmult:
+                toSingleOperand();
                 sb.append("×");
                 displayupdate();
                 break;
             case R.id.buttondiv:
+                toSingleOperand();
                 sb.append("÷");
                 displayupdate();
                 break;
@@ -181,6 +184,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void displayupdate() {
         String outputtext = sb.toString();
         textView.setText(outputtext);
+    }
+
+    public void toSingleOperand() {
+        String singleOperand = singlenumbersb.toString();
+        BigDecimal parseToBd = new BigDecimal(singleOperand);
+        inputList.add(parseToBd);
+
     }
 
     public void bigMaths() {
