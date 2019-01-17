@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 displayupdate();
                 break;
             case R.id.buttonplus:
-                String singleOperand = singlenumbersb.toString();
+                singleOperandBuilder();
                 sb.append("+");
                 displayupdate();
                 break;
@@ -191,6 +191,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private void singleOperandBuilder() {
+        String singleOperand;
+        singleOperand = singlenumbersb.toString();
+    }
 
 
 
