@@ -194,6 +194,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void singleOperandBuilder() {
         String singleOperand;
         singleOperand = singlenumbersb.toString();
+        inputList.add(new BigDecimal(singleOperand));
     }
 
 
