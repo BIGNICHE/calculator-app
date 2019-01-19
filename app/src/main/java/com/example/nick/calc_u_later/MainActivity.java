@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return operator;
     }
 
-    ArrayList<BigDecimal> inputList = new ArrayList<>();
+    ArrayList<String> inputList = new ArrayList<>();
     Queue<BigDecimal> outputQueue = new LinkedList<>();
 
 
@@ -152,21 +152,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.buttonplus:
                 toSingleOperand();
+                inputList.add("+");
                 sb.append("+");
                 displayupdate();
                 break;
             case R.id.buttonminus:
                 toSingleOperand();
+                inputList.add("-");
                 sb.append("-");
                 displayupdate();
                 break;
             case R.id.buttonmult:
                 toSingleOperand();
+                inputList.add("×");
                 sb.append("×");
                 displayupdate();
                 break;
             case R.id.buttondiv:
                 toSingleOperand();
+                inputList.add("÷");
                 sb.append("÷");
                 displayupdate();
                 break;
@@ -188,15 +192,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void toSingleOperand() {
         String singleOperand = singlenumbersb.toString();
-        BigDecimal parseToBd = new BigDecimal(singleOperand);
-        inputList.add(parseToBd);
-
+        inputList.add(singleOperand);
     }
 
     public void bigMaths() {
+        //SHUNTING YARD ALGORITHM ------------------------------------------------------------------
+
+
+
+
         //BigDecimal value = new BigDecimal(1);
         //value.divide(new BigDecimal(2));
-        Deque<BigDecimal> operands = new ArrayDeque<BigDecimal>();
+        //Deque<BigDecimal> operands = new ArrayDeque<BigDecimal>();
 
 
     }
