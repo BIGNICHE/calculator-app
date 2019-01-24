@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
    // }
 
     ArrayList<String> inputList = new ArrayList<>();
-    Queue<BigDecimal> outputQueue = new LinkedList<>();
+    Queue<String> outputQueue = new LinkedList<>();
     Stack<String> operatorStack = new Stack();
     String currentOperand = new String();
 
@@ -212,7 +212,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //or more accurately, before the operators are pushed to the output queue.
         //This prevents type mismatch, although i expect it will end up being an issue.
         //first things first, control structure that empties input list
-        while(inputList.isEmpty != true) {
+
+        String currentOperator;
+
+        while(!inputList.isEmpty()) {
             //second things second, i am the realest
             //but in all seriousness, now we can push numbers to the output while saving brackets
             //for later
@@ -220,10 +223,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             currentOperand = inputList.get(inputList.size());
             //Check if it's a bracket or not
             if (currentOperand != "(" && currentOperand != ")") {
-                
+                //it isn't a bracket so add to the output queue
+                outputQueue.add(currentOperand);
+            } else if (currentOperand == "(") {
+                //this code runs when currentoperand is an open bracket
+                operatorStack.push("(");
+
+            } else {
+                //this code runs when currentoperand is a close bracket
+                currentOperator = operatorStack.pop();
+                while (currentOperator != "(") {
+
+                    outputQueue.add(currentOperator);
+                    currentOperator = operatorStack.pop();
+
+                }
+                //everything to the close bracket has been added to the output queue
+                //also the close bracket is discarded
             }
 
 
+
+        }
+        //no more inputs remain
+        //push everything off the stack into the output queue
+
+        while (!operatorStack.isEmpty()){
+            currentOperator = operatorStack.pop();
+            outputQueue.add(currentOperator);
         }
 
 
