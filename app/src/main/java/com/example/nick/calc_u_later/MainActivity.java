@@ -20,16 +20,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textView;
     StringBuilder sb = new StringBuilder();
     StringBuilder singlenumbersb = new StringBuilder();
-    static void stack_push(Stack<String> operatorStack, String operator){
-        operatorStack.push(operator);
-    }
-    String stack_pop(Stack<String> operatorStack, String operator){
-        operator = operatorStack.pop();
-        return operator;
-    }
+   // static void stack_push(Stack<String> operatorStack, String operator){
+  //      operatorStack.push(operator);
+   // }
+   // String stack_pop(Stack<String> operatorStack, String operator){
+   //     operator = operatorStack.pop();
+   //     return operator;
+   // }
 
     ArrayList<String> inputList = new ArrayList<>();
     Queue<BigDecimal> outputQueue = new LinkedList<>();
+    Stack<String> operatorStack = new Stack();
+    String currentOperand = new String();
 
 
 
@@ -87,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //------------------------------------------------------------------------------------------
         textView=(TextView)findViewById(R.id.textView);
 
+        //initialise the operator stack
+
+
 
     }
 
@@ -94,52 +99,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button0:
-                singlenumbersb.append(0); //The stringbuilder singlenumbersb is used because multiple buttons need to be pressed in order to write operands above 9
+                singlenumbersb.append("0"); //The stringbuilder singlenumbersb is used because multiple buttons need to be pressed in order to write operands above 9
                 sb.append("0"); // The stringbuilder sb is shown onscreen, ie your input is shown directly onscreen without any maths going on in the background
                 displayupdate(); // update the TextView with the current string of user inputs
                 break;
             case R.id.button1:
-                singlenumbersb.append(1);
+                singlenumbersb.append("1");
                 sb.append("1");
                 displayupdate();
                 break;
             case R.id.button2:
-                singlenumbersb.append(2);
+                singlenumbersb.append("2");
                 sb.append("2");
                 displayupdate();
                 break;
             case R.id.button3:
-                singlenumbersb.append(3);
+                singlenumbersb.append("3");
                 sb.append("3");
                 displayupdate();
                 break;
             case R.id.button4:
-                singlenumbersb.append(4);
+                singlenumbersb.append("4");
                 sb.append("4");
                 displayupdate();
                 break;
             case R.id.button5:
-                singlenumbersb.append(5);
+                singlenumbersb.append("5");
                 sb.append("5");
                 displayupdate();
                 break;
             case R.id.button6:
-                singlenumbersb.append(6);
+                singlenumbersb.append("6");
                 sb.append("6");
                 displayupdate();
                 break;
             case R.id.button7:
-                singlenumbersb.append(7);
+                singlenumbersb.append("7");
                 sb.append("7");
                 displayupdate();
                 break;
             case R.id.button8:
-                singlenumbersb.append(8);
+                singlenumbersb.append("8");
                 sb.append("8");
                 displayupdate();
                 break;
             case R.id.button9:
-                singlenumbersb.append(9);
+                singlenumbersb.append("9");
                 sb.append("9");
                 displayupdate();
                 break;
@@ -152,35 +157,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.buttonplus:
                 toSingleOperand();
-                inputList.add("+");
+                operatorStack.push("+");
+                //inputList.add("+");
                 sb.append("+");
                 displayupdate();
                 break;
             case R.id.buttonminus:
                 toSingleOperand();
-                inputList.add("-");
+                operatorStack.push("-");
+                //inputList.add("-");
                 sb.append("-");
                 displayupdate();
                 break;
             case R.id.buttonmult:
                 toSingleOperand();
-                inputList.add("×");
+                operatorStack.push("*");
+                // inputList.add("×");
                 sb.append("×");
                 displayupdate();
                 break;
             case R.id.buttondiv:
                 toSingleOperand();
-                inputList.add("÷");
+                operatorStack.push("/");
+                //inputList.add("÷");
                 sb.append("÷");
                 displayupdate();
                 break;
             case R.id.buttondec:
+                singlenumbersb.append(".");
                 sb.append(".");
                 displayupdate();
                 break;
             case R.id.buttonsin:
-                sb.append("sin(");
-                displayupdate();
+                //sb.append("sin(");
+                //displayupdate();
 
         }
     }
@@ -197,8 +207,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void bigMaths() {
         //SHUNTING YARD ALGORITHM ------------------------------------------------------------------
+        //Everything comes into here as a string
+        //Plan is to convert our numbers from string to big decimal once everything is in order
+        //or more accurately, before the operators are pushed to the output queue.
+        //This prevents type mismatch, although i expect it will end up being an issue.
+        //first things first, control structure that empties input list
+        while(inputList.isEmpty != true) {
+            //second things second, i am the realest
+            //but in all seriousness, now we can push numbers to the output while saving brackets
+            //for later
+
+            currentOperand = inputList.get(inputList.size());
+            //Check if it's a bracket or not
+            if (currentOperand != "(" && currentOperand != ")") {
+                
+            }
 
 
+        }
 
 
         //BigDecimal value = new BigDecimal(1);
