@@ -242,20 +242,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             else {
                 outputQueue.add(cod);
             }
-
-
-
-
-
-
         }
         //no more inputs remain
         //push everything off the stack into the output queue
-
         while (!operatorStack.isEmpty()){
             currentOperator = operatorStack.pop();
             outputQueue.add(currentOperator);
         }
+        // our output queue is now full
 
 
         //BigDecimal value = new BigDecimal(1);
