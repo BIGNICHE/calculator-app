@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //second things second, i am the realest
             //but in all seriousness, now we can push numbers to the output while saving brackets
             //for later
-            String cod;
+            String cod; //cod stands for current operand
             cod = inputList.get(inputList.size());
             //Check if it's a bracket or not
 
@@ -234,7 +234,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 do {
                     currentOperator = operatorStack.pop();
                     outputQueue.add(currentOperator);
-                }while (currentOperator != "(");
+                } while (currentOperator != "(");
+            }
+            else if (cod.equals("+")||cod.equals("-")||cod.equals("*")||cod.equals("/")) {
+                operatorStack.push(cod);
+            }
+            else {
+                outputQueue.add(cod);
+            }
 
 
 
