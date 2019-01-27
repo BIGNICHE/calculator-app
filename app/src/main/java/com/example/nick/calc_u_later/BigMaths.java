@@ -48,14 +48,20 @@ public class BigMaths
             }
             else if (currentOperand instanceof Operator)
             {
-                Operator operator = (Operator) operatorStack.peek();
-
-                while (operator.getPrecedence() > ((Operator) currentOperand).getPrecedence())
+                if (!operatorStack.isEmpty())
                 {
-                    Input moveOperator = operatorStack.pop();
-                    outputQueue.add(moveOperator);
-                    operator = (Operator) operatorStack.peek();
 
+                    Operator operator = (Operator) operatorStack.peek();
+
+                    while (operator.getPrecedence() > ((Operator) currentOperand).getPrecedence())
+                    {
+                        Input moveOperator = operatorStack.pop();
+                        outputQueue.add(moveOperator);
+                        operator = (Operator) operatorStack.peek();
+
+                    }
+                } else {
+                    operatorStack.push(currentOperand);
                 }
             }
             else if (currentOperand instanceof LeftBracket)
