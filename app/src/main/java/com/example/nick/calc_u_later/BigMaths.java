@@ -3,6 +3,7 @@ package com.example.nick.calc_u_later;
 import com.example.nick.calc_u_later.inputs.Input;
 import com.example.nick.calc_u_later.inputs.LeftBracket;
 import com.example.nick.calc_u_later.inputs.RightBracket;
+import com.example.nick.calc_u_later.inputs.oper.operands.Operand;
 import com.example.nick.calc_u_later.inputs.oper.operators.Operator;
 
 import java.util.LinkedList;
@@ -41,26 +42,62 @@ public class BigMaths
             //Check if it's a bracket or not
 
 
-            if (currentOperand instanceof LeftBracket)
-            {
-                operatorStack.push(new LeftBracket());
-            }
-            else if (currentOperand instanceof RightBracket)
-            {
-                do
-                {
-                    currentOperator = operatorStack.pop();
-                    outputQueue.add(currentOperator);
-                } while (!(currentOperator instanceof LeftBracket));
-            }
-            else if (currentOperand instanceof Operator)
-            {
-                operatorStack.push(currentOperand);
-            }
-            else
+            if (currentOperand instanceof Operand)
             {
                 outputQueue.add(currentOperand);
             }
+            else if (currentOperand instanceof Operator)
+            {
+                Operator operator = (Operator) operatorStack.peek();
+
+                while (operator.getPrecedence() > ((Operator) currentOperand).getPrecedence())
+                {
+                    Input moveOperator = operatorStack.pop();
+                    outputQueue.add(moveOperator);
+                    operator = (Operator) operatorStack.peek();
+
+                }
+            }
+            else if (currentOperand instanceof LeftBracket)
+            {
+                operatorStack.push(currentOperand);
+            }
+            else if (currentOperand instanceof RightBracket)
+            {
+                Input topOfOperatorStack  = operatorStack.peek();
+                while (!(topOfOperatorStack instanceof LeftBracket))
+                {
+                    topOfOperatorStack = operatorStack.pop();
+                    outputQueue.add(topOfOperatorStack);
+                    topOfOperatorStack = operatorStack.peek();
+                }
+            }
+            else
+            {
+                System.out.println("Error, unexpected type");
+            }
+
+
+//            if (currentOperand instanceof LeftBracket)
+//            {
+//                operatorStack.push(new LeftBracket());
+//            }
+//            else if (currentOperand instanceof RightBracket)
+//            {
+//                do
+//                {
+//                    currentOperator = operatorStack.pop();
+//                    outputQueue.add(currentOperator);
+//                } while (!(currentOperator instanceof LeftBracket));
+//            }
+//            else if (currentOperand instanceof Operator)
+//            {
+//                operatorStack.push(currentOperand);
+//            }
+//            else
+//            {
+//                outputQueue.add(currentOperand);
+//            }
         }
         //no more inputs remain
         //push everything off the stack into the output queue
