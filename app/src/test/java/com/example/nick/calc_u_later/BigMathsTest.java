@@ -43,11 +43,11 @@ public class BigMathsTest
         BigMaths bigMaths = new BigMaths();
 
         Stack<Input> input = new Stack<>();
-        input.push(new LeftBracket());
+        input.push(new RightBracket());
         input.push(new Operand(new BigDecimal(1)));
         input.push(new Plus());
         input.push(new Operand(new BigDecimal(1)));
-        input.push(new RightBracket());
+        input.push(new LeftBracket());
         input.push(new Multiply());
         input.push(new Operand(new BigDecimal(2)));
 

@@ -48,17 +48,19 @@ public class BigMaths
             }
             else if (currentOperand instanceof Operator)
             {
-                if (!operatorStack.isEmpty())
-                {
+                if (!operatorStack.isEmpty()) {
+                    if (operatorStack.peek() instanceof Operator) {
+                        Operator operator = (Operator) operatorStack.peek();
 
-                    Operator operator = (Operator) operatorStack.peek();
+                        while (operator.getPrecedence() > ((Operator) currentOperand).getPrecedence()) {
+                            Input moveOperator = operatorStack.pop();
+                            outputQueue.add(moveOperator);
+                            operator = (Operator) operatorStack.peek();
 
-                    while (operator.getPrecedence() > ((Operator) currentOperand).getPrecedence())
+                        }
+                    } else
                     {
-                        Input moveOperator = operatorStack.pop();
-                        outputQueue.add(moveOperator);
-                        operator = (Operator) operatorStack.peek();
-
+                        operatorStack.push(currentOperand);
                     }
                 } else {
                     operatorStack.push(currentOperand);
@@ -77,7 +79,11 @@ public class BigMaths
                     outputQueue.add(topOfOperatorStack);
                     topOfOperatorStack = operatorStack.peek();
                 }
+                operatorStack.pop();
             }
+
+
+
             else
             {
                 System.out.println("Error, unexpected type");
