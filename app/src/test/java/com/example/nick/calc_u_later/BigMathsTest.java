@@ -56,9 +56,9 @@ public class BigMathsTest
         Queue<Input> expected = new LinkedList<>();
         expected.add(new Operand(new BigDecimal(1)));
         expected.add(new Operand(new BigDecimal(1)));
-        input.push(new Operand(new BigDecimal(2)));
-        input.push(new Multiply());
-        input.push(new Plus());
+        expected.add(new Operand(new BigDecimal(2)));
+        expected.add(new Multiply());
+        expected.add(new Plus());
 
         Assert.assertEquals(expected, output);
     }
